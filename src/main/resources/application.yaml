@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: albums-ws
+
+  rabbitmq:
+    username: user
+    password: password
+
+  devtools:
+    restart:
+      enabled: true
+
+  bus:
+    enabled: true
+    refresh:
+      enabled: true
+
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+      settings.web-allow-others: true
+
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/photo_app_albums?createDatabaseIfNotExist=true
+#    username: root
+#    password: peanutbutter
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    registerWithEureka: true
+
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+server:
+  port: ${PORT:0}
