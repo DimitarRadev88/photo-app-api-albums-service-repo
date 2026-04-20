@@ -6,6 +6,7 @@ import com.dimitarrradev.photoapp.api.albums.model.AlbumRequest;
 import com.dimitarrradev.photoapp.api.albums.model.AlbumResponse;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -17,16 +18,15 @@ public class AlbumsService {
         this.albumsRepository = albumsRepository;
     }
 
-    public AlbumResponse getAlbums(String userId) {
+    public List<AlbumResponse> getAlbums(String userId) {
         return albumsRepository
-                .findByUserId(userId)
+                .findAllByUserId(userId).stream()
                 .map(entity -> new AlbumResponse(
                         entity.getAlbumId(),
                         entity.getUserId(),
                         entity.getName(),
                         entity.getDescription()
-                ))
-                .orElse(null);
+                )).toList();
     }
 
     public void createAlbum(AlbumRequest albumRequest) {

@@ -6,6 +6,8 @@ import com.dimitarrradev.photoapp.api.albums.service.AlbumsService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("users/{userId}/albums")
 public class AlbumsController {
@@ -21,13 +23,13 @@ public class AlbumsController {
         return "Working!";
     }
 
-    @PostMapping("/")
+    @PostMapping
     public void createAlbum(AlbumRequest albumRequest) {
         albumsService.createAlbum(albumRequest);
     }
 
-    @GetMapping("/")
-    public ResponseEntity<AlbumResponse> getAlbums(@PathVariable String userId) {
+    @GetMapping
+    public ResponseEntity<List<AlbumResponse>> getAlbums(@PathVariable String userId) {
         return ResponseEntity.ok(albumsService.getAlbums(userId));
     }
 
