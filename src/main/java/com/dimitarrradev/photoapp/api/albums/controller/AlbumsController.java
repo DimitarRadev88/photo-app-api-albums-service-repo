@@ -18,11 +18,6 @@ public class AlbumsController {
         this.albumsService = albumsService;
     }
 
-    @GetMapping("/status/check")
-    public String statusCheck() {
-        return "Working!";
-    }
-
     @PostMapping
     public void createAlbum(AlbumRequest albumRequest) {
         albumsService.createAlbum(albumRequest);
