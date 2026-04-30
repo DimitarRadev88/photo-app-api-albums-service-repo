@@ -31,6 +31,10 @@ spring:
       ddl-auto: update
     database-platform: org.hibernate.dialect.MySQLDialect
 
+  output:
+    ansi:
+      enabled: ALWAYS
+
 eureka:
   client:
     serviceUrl:
@@ -49,6 +53,9 @@ management:
       probability: 1.0
 
 logging:
+  file:
+    name: ${LOG_FILE_NAME}
+
   pattern:
     correlation: "[${spring.application.name:},%X{traceId:-},%X{spanId:-}] "
   include-application-name: false

@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+albums-ws.log
+albums-ws.log.*
